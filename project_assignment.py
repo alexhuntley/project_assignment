@@ -5,6 +5,7 @@ from scipy.optimize import linear_sum_assignment
 import tkinter.filedialog, tkinter.scrolledtext
 import tkinter as tk
 import sys
+import os.path
 
 def build_matrix(ws, keywords, keyword_indices, use_quota=False):
     n_k = len(keyword_indices)
@@ -62,7 +63,8 @@ try:
     worker_ind, project_ind = linear_sum_assignment(C)
 
     output_filename = tk.filedialog.asksaveasfilename(filetypes=[("Excel spreadsheet", "*.xlsx")], parent=root,
-                                                      title="Choose output file")
+                                                      title="Choose output file",
+                                                      initialdir=os.path.dirname(input_filename))
     out_wb = openpyxl.Workbook()
     out_ws = out_wb.active
     out_ws.title = "Output"
