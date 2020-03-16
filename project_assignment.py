@@ -42,6 +42,8 @@ def textbox_print(string):
     textbox.insert(tk.END, "\n")
 
 root = tk.Tk()
+root.title("Project assignment")
+root.resizable(False, False)
 textbox = tk.scrolledtext.ScrolledText(root)
 textbox.pack()
 
@@ -64,6 +66,7 @@ try:
 
     output_filename = tk.filedialog.asksaveasfilename(filetypes=[("Excel spreadsheet", "*.xlsx")], parent=root,
                                                       title="Choose output file",
+                                                      defaultextension='.xlsx',
                                                       initialdir=os.path.dirname(input_filename))
     out_wb = openpyxl.Workbook()
     out_ws = out_wb.active
